@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Graph.gd" type="Script" id=1]
+
+[node name="Control" type="GraphNode"]
+anchor_right = 0.137
+anchor_bottom = 0.144
+margin_right = -0.0400085
+margin_bottom = 0.479996
+title = "Simple Node"
+show_close = true
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 247.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 5, 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 68.0
+margin_bottom = 14.0
+text = "Character: "
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer"]
+margin_left = 72.0
+margin_right = 77.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 5, 10 )
+[connection signal="close_request" from="." to="." method="_on_close"]
+[connection signal="resize_request" from="." to="." method="_on_rezise"]
