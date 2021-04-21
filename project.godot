@@ -8,15 +8,30 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Control",
+"class": "Editor",
+"language": "GDScript",
+"path": "res://src/Editor.gd"
+}, {
+"base": "Node",
+"class": "Events",
+"language": "GDScript",
+"path": "res://src/Events.gd"
+} ]
 _global_script_class_icons={
-
+"Editor": "",
+"Events": ""
 }
 
 [application]
 
 config/name="TestGraphNode"
 config/icon="res://icon.png"
+
+[autoload]
+
+Main="*res://src/Main.gd"
 
 [display]
 
