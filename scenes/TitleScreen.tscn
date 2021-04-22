@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://scenes/windows/FileDialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/windows/AlertDialog.tscn" type="PackedScene" id=3]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -13,8 +15,10 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -8.0
-margin_right = -8.0
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 16.0
+margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -58,3 +62,25 @@ margin_top = 48.0
 margin_right = 103.0
 margin_bottom = 68.0
 text = "Salir del SDT"
+
+[node name="FileDialog" parent="." instance=ExtResource( 2 )]
+anchor_top = 0.007
+margin_left = 336.0
+margin_top = 192.44
+margin_right = -392.0
+margin_bottom = -168.0
+popup_exclusive = true
+access = 2
+current_dir = "/home/kalaix/current/SimpleDialogTool"
+current_path = "/home/kalaix/current/SimpleDialogTool/"
+
+[node name="Alert" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.474
+anchor_right = 0.5
+anchor_bottom = 0.474
+margin_left = -136.0
+margin_top = -39.92
+margin_right = 128.0
+margin_bottom = 64.08
+popup_exclusive = true

@@ -1,10 +1,67 @@
 [gd_scene format=2]
 
 [node name="EndNode" type="GraphNode"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/title_color = Color( 0.145098, 0.0352941, 0.921569, 1 )
+anchor_right = 0.182
+anchor_bottom = 0.231
+margin_right = 0.559998
+margin_bottom = 0.520004
+custom_colors/title_color = Color( 1, 0, 0, 1 )
 title = "EndNode"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 334.0
+margin_bottom = 154.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 318.0
+margin_bottom = 14.0
+text = "DISPLAY:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 318.0
+margin_bottom = 42.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 46.0
+margin_right = 318.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 13.0
+margin_right = 101.0
+margin_bottom = 27.0
+text = "RESTART MODE:"
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 105.0
+margin_right = 181.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 90.0
+margin_right = 318.0
+margin_bottom = 130.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_top = 13.0
+margin_right = 92.0
+margin_bottom = 27.0
+text = "REPETE MODE:"
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 96.0
+margin_right = 172.0
+margin_bottom = 40.0
+align = 2

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Editor.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Toolbar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/windows/FileDialog.tscn" type="PackedScene" id=3]
 
 [node name="Editor" type="Control"]
 anchor_right = 1.0
@@ -21,4 +22,16 @@ __meta__ = {
 
 [node name="Toolbar" parent="." instance=ExtResource( 2 )]
 anchor_bottom = 0.03
-margin_bottom = -0.400002
+margin_bottom = -0.399998
+
+[node name="FileDialog" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.504
+anchor_top = 0.474
+anchor_right = 0.504
+anchor_bottom = 0.474
+margin_left = -567.68
+margin_top = -325.92
+margin_right = 568.32
+margin_bottom = 392.08
+window_title = "Guardar un Archivo"
+mode = 4

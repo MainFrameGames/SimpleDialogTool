@@ -12,10 +12,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1920.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.059
-margin_bottom = 0.279995
+margin_right = 410.0
+margin_bottom = -23.72
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,7 +35,7 @@ __meta__ = {
 
 [node name="AñadirNodo" type="MenuButton" parent="HBoxContainer"]
 margin_right = 122.0
-margin_bottom = 64.0
+margin_bottom = 40.0
 text = "Añadir Nodo"
 items = [ "Simple Node", null, 0, false, false, 0, 0, null, "", false, "Choice Node", null, 0, false, false, 1, 0, null, "", false, "End Node", null, 0, false, false, 2, 0, null, "", false ]
 switch_on_hover = true
@@ -31,22 +43,19 @@ switch_on_hover = true
 [node name="Exportar" type="MenuButton" parent="HBoxContainer"]
 margin_left = 126.0
 margin_right = 218.0
-margin_bottom = 64.0
+margin_bottom = 40.0
 text = "Exportar"
+items = [ "Export JSON", null, 0, false, false, 0, 0, null, "", false, "Export to GDScript ", null, 0, false, false, 1, 0, null, "", false, "Export Signals", null, 0, false, false, 2, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="Guardar" type="Button" parent="HBoxContainer"]
 margin_left = 222.0
 margin_right = 304.0
-margin_bottom = 64.0
+margin_bottom = 40.0
 text = "Guardar"
 
 [node name="Salir" type="Button" parent="HBoxContainer"]
 margin_left = 308.0
 margin_right = 450.0
-margin_bottom = 64.0
-text = "Salir del SDT"
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
 margin_bottom = 40.0
+text = "Salir del SDT"

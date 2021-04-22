@@ -1,6 +1,12 @@
 [gd_scene format=2]
 
 [node name="ChoiceNode" type="GraphNode"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.182
+anchor_bottom = 0.231
+margin_right = 0.559967
+margin_bottom = 0.519989
 title = "ChoiceNode"
+show_close = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
