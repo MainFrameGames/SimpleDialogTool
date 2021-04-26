@@ -19,15 +19,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HSeparator" type="HSeparator" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.037
+margin_bottom = 40.04
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.059
+anchor_bottom = 0.037
 margin_right = 410.0
-margin_bottom = -23.72
+margin_bottom = 0.0400009
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

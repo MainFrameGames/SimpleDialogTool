@@ -1,10 +1,19 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
 
-[node name="EndNode" type="GraphNode"]
+[ext_resource path="res://resources/tema.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/components/nodes/node_parts/Line.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/nodes/node_parts/Display.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/nodes/node_parts/RepeatCheck.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/nodes/node_parts/RestartCheck.tscn" type="PackedScene" id=5]
+
+[node name="EndNode" type="GraphNode" groups=[
+"dialog_nodes",
+]]
 anchor_right = 0.182
 anchor_bottom = 0.231
 margin_right = 0.559998
 margin_bottom = 0.520004
+theme = ExtResource( 1 )
 custom_colors/title_color = Color( 1, 0, 0, 1 )
 title = "EndNode"
 slot/0/left_enabled = false
@@ -13,55 +22,56 @@ slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color( 1, 1, 1, 1 )
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color( 1, 1, 1, 1 )
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color( 1, 1, 1, 1 )
+slot/3/right_enabled = false
+slot/3/right_type = 0
+slot/3/right_color = Color( 1, 1, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 16.0
+[node name="Display" parent="." instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
 margin_top = 24.0
-margin_right = 334.0
-margin_bottom = 154.0
+margin_right = 322.0
+margin_bottom = 82.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 318.0
-margin_bottom = 14.0
-text = "DISPLAY:"
+[node name="Control" parent="." instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 83.0
+margin_right = 322.0
+margin_bottom = 122.0
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
-margin_top = 18.0
-margin_right = 318.0
-margin_bottom = 42.0
+[node name="Restart" parent="." instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 123.0
+margin_right = 322.0
+margin_bottom = 150.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 46.0
-margin_right = 318.0
-margin_bottom = 86.0
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_top = 13.0
-margin_right = 101.0
-margin_bottom = 27.0
-text = "RESTART MODE:"
-
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 105.0
-margin_right = 181.0
-margin_bottom = 40.0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 90.0
-margin_right = 318.0
-margin_bottom = 130.0
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_top = 13.0
-margin_right = 92.0
-margin_bottom = 27.0
-text = "REPETE MODE:"
-
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 96.0
-margin_right = 172.0
-margin_bottom = 40.0
-align = 2
+[node name="Control2" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 151.0
+margin_right = 322.0
+margin_bottom = 178.0

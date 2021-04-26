@@ -1,0 +1,20 @@
+[gd_scene format=2]
+
+[node name="Control" type="VBoxContainer"]
+anchor_right = 0.117188
+anchor_bottom = 0.137963
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 225.0
+margin_bottom = 14.0
+text = "LINE"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_top = 18.0
+margin_right = 225.0
+margin_bottom = 149.0
+size_flags_vertical = 3

@@ -1,77 +1,125 @@
-[gd_scene format=2]
+[gd_scene load_steps=7 format=2]
 
-[node name="SimpleNode" type="GraphNode"]
-anchor_left = 0.299
-anchor_right = 0.458
-anchor_bottom = 0.194
-margin_left = -0.0800781
-margin_right = -0.360046
-margin_bottom = 0.479996
+[ext_resource path="res://resources/tema.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/components/nodes/node_parts/Display.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/nodes/node_parts/Line.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/nodes/node_parts/Connect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/nodes/node_parts/Callback.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/SimpleNode.gd" type="Script" id=6]
+
+[node name="SimpleNode" type="GraphNode" groups=[
+"dialog_nodes",
+]]
+anchor_left = 0.306
+anchor_top = 0.000925926
+anchor_right = 0.488729
+anchor_bottom = 0.294
+margin_left = 0.47998
+margin_right = -0.360107
+margin_bottom = -0.519989
+theme = ExtResource( 1 )
 title = "SimpleNode"
 show_close = true
 resizable = true
-slot/0/left_enabled = false
+slot/0/left_enabled = true
 slot/0/left_type = 0
-slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/left_color = Color( 0.541176, 0.0666667, 0.807843, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 0
-slot/0/right_color = Color( 0.243137, 1, 0, 1 )
+slot/0/right_color = Color( 0.541176, 0.0666667, 0.807843, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color( 1, 1, 1, 1 )
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color( 0.541176, 0.0666667, 0.807843, 1 )
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color( 1, 1, 1, 1 )
+slot/3/right_enabled = false
+slot/3/right_type = 0
+slot/3/right_color = Color( 0.541176, 0.0666667, 0.807843, 1 )
+script = ExtResource( 6 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 16.0
+[node name="Connect" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
 margin_top = 24.0
-margin_right = 289.0
-margin_bottom = 138.0
+margin_right = 322.0
+margin_bottom = 51.0
 
-[node name="DISPLAY" type="Label" parent="HBoxContainer"]
-margin_right = 273.0
-margin_bottom = 14.0
-text = "DISPLAY"
-
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
-margin_top = 18.0
-margin_right = 273.0
-margin_bottom = 42.0
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_top = 46.0
-margin_right = 273.0
-margin_bottom = 60.0
-text = "LINE: "
-
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer"]
-margin_top = 64.0
-margin_right = 273.0
-margin_bottom = 64.0
-text = "
-"
-
-[node name="CallbacksLabel" type="Label" parent="HBoxContainer"]
-margin_top = 68.0
-margin_right = 273.0
-margin_bottom = 82.0
-text = "CALLBACKS"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
-margin_top = 86.0
-margin_right = 273.0
+[node name="Display" parent="." instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 52.0
+margin_right = 322.0
 margin_bottom = 110.0
 
-[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/HBoxContainer"]
-margin_right = 58.0
-margin_bottom = 24.0
+[node name="Control" parent="." instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 111.0
+margin_right = 322.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 120, 100 )
+size_flags_vertical = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/HBoxContainer"]
-margin_left = 62.0
-margin_right = 103.0
-margin_bottom = 24.0
-text = "ADD"
+[node name="Label" parent="Control" index="0"]
+margin_right = 294.0
+margin_bottom = 27.0
 
-[node name="ItemList" type="ItemList" parent="HBoxContainer"]
-margin_top = 114.0
-margin_right = 273.0
-margin_bottom = 114.0
-items = [ "Ítem 0", null, false, "Ítem 1", null, false ]
+[node name="TextEdit" parent="Control" index="1"]
+margin_top = 31.0
+margin_right = 294.0
+margin_bottom = 100.0
+
+[node name="Callback" parent="." instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 212.0
+margin_right = 322.0
+margin_bottom = 362.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Title" parent="Callback" index="0"]
+margin_right = 294.0
+margin_bottom = 27.0
+
+[node name="HBoxContainer" parent="Callback" index="1"]
+margin_top = 31.0
+margin_right = 294.0
+margin_bottom = 58.0
+
+[node name="LineEdit" parent="Callback/HBoxContainer" index="0"]
+margin_right = 248.0
+margin_bottom = 27.0
+
+[node name="AddButton" parent="Callback/HBoxContainer" index="1"]
+margin_left = 252.0
+margin_right = 294.0
+margin_bottom = 27.0
+
+[node name="CallbackList" parent="Callback" index="2" groups=[
+"dialog_nodes",
+]]
+margin_top = 62.0
+margin_right = 294.0
+margin_bottom = 150.0
+items = [ "Ítem 0", null, false ]
+
+[editable path="Control"]
+
+[editable path="Callback"]

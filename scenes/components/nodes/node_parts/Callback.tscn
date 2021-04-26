@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/CallbackControl.gd" type="Script" id=1]
+
+[node name="Callback" type="VBoxContainer"]
+anchor_right = 0.133333
+anchor_bottom = 0.155556
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="."]
+margin_right = 255.0
+margin_bottom = 14.0
+text = "CALLBACKS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 255.0
+margin_bottom = 42.0
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+margin_right = 210.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="HBoxContainer"]
+margin_left = 214.0
+margin_right = 255.0
+margin_bottom = 24.0
+text = "ADD"
+
+[node name="CallbackList" type="ItemList" parent="."]
+margin_top = 46.0
+margin_right = 255.0
+margin_bottom = 168.0
+size_flags_vertical = 3

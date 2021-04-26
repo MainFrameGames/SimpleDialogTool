@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Exporter",
 "language": "GDScript",
 "path": "res://src/Exporter.gd"
+}, {
+"base": "GraphNode",
+"class": "SimpleNode",
+"language": "GDScript",
+"path": "res://src/SimpleNode.gd"
 } ]
 _global_script_class_icons={
 "Editor": "",
 "Events": "",
-"Exporter": ""
+"Exporter": "",
+"SimpleNode": ""
 }
 
 [application]
@@ -44,7 +50,6 @@ Main="*res://src/Main.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 
 [rendering]
 

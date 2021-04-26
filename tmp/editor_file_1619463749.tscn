@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Editor.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Toolbar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/windows/FileDialog.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/tema.tres" type="Theme" id=5]
+[ext_resource path="res://src/Toolbar.gd" type="Script" id=2]
+[ext_resource path="res://resources/tema.tres" type="Theme" id=3]
+[ext_resource path="res://scenes/Toolbar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/windows/FileDialog.tscn" type="PackedScene" id=6]
 
 [node name="Editor" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 5 )
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,11 +25,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Toolbar" parent="." instance=ExtResource( 2 )]
+[node name="Toolbar" type="Control" parent="." instance=ExtResource( 4 )]
+anchor_right = 1.0
 anchor_bottom = 0.03
 margin_bottom = -0.399998
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="FileDialog" parent="." instance=ExtResource( 3 )]
+[node name="FileDialog" type="FileDialog" parent="." instance=ExtResource( 6 )]
 anchor_left = 0.504
 anchor_top = 0.474
 anchor_right = 0.504
@@ -37,8 +44,7 @@ margin_left = -567.68
 margin_top = -325.92
 margin_right = 568.32
 margin_bottom = 392.08
-window_title = "Guardar un Archivo"
-mode = 4
+resizable = true
 
 [node name="Control2" type="Control" parent="."]
 margin_top = 42.0
@@ -48,7 +54,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" parent="Control2" instance=ExtResource( 4 )]
+[node name="Control" type="Tree" parent="Control2" instance=ExtResource( 5 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_top = -2.0
 
 [node name="Panel" type="Panel" parent="Control2"]
@@ -56,7 +64,7 @@ anchor_top = -0.002
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 0.0760002
-theme = ExtResource( 5 )
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

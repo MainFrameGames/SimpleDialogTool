@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Display" type="VBoxContainer"]
+anchor_right = 0.0729167
+anchor_bottom = 0.039
+margin_bottom = -0.120003
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_right = 140.0
+margin_bottom = 14.0
+text = "DISPLAY"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_top = 18.0
+margin_right = 140.0
+margin_bottom = 42.0
+caret_blink = true
+caret_blink_speed = 0.5

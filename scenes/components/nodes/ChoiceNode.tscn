@@ -1,6 +1,8 @@
 [gd_scene format=2]
 
-[node name="ChoiceNode" type="GraphNode"]
+[node name="ChoiceNode" type="GraphNode" groups=[
+"dialog_nodes",
+]]
 anchor_right = 0.182
 anchor_bottom = 0.231
 margin_right = 0.559967

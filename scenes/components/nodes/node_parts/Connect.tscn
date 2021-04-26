@@ -1,0 +1,35 @@
+[gd_scene format=2]
+
+[node name="Connect" type="HBoxContainer"]
+anchor_right = 0.141667
+anchor_bottom = 0.0277778
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TitleFrom" type="Label" parent="."]
+margin_left = 98.0
+margin_top = 8.0
+margin_right = 140.0
+margin_bottom = 22.0
+text = "FROM:"
+
+[node name="From" type="Label" parent="."]
+margin_left = 144.0
+margin_top = 8.0
+margin_right = 144.0
+margin_bottom = 22.0
+
+[node name="TitleTo" type="Label" parent="."]
+margin_left = 148.0
+margin_top = 8.0
+margin_right = 170.0
+margin_bottom = 22.0
+text = "TO:"
+
+[node name="To" type="Label" parent="."]
+margin_left = 174.0
+margin_top = 8.0
+margin_right = 174.0
+margin_bottom = 22.0
