@@ -8,12 +8,12 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 margin_right = 225.0
 margin_bottom = 14.0
 text = "LINE"
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="LineText" type="TextEdit" parent="."]
 margin_top = 18.0
 margin_right = 225.0
 margin_bottom = 149.0

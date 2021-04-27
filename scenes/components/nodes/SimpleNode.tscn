@@ -55,71 +55,80 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 24.0
-margin_right = 322.0
+margin_right = 321.0
 margin_bottom = 51.0
+
+[node name="TitleFrom" parent="Connect" index="0"]
+margin_left = 84.0
+margin_top = 0.0
+margin_right = 142.0
+margin_bottom = 27.0
+
+[node name="From" parent="Connect" index="1"]
+margin_left = 146.0
+margin_top = 0.0
+margin_right = 154.0
+margin_bottom = 27.0
+
+[node name="TitleTo" parent="Connect" index="2"]
+margin_left = 158.0
+margin_top = 0.0
+margin_right = 196.0
+margin_bottom = 27.0
+
+[node name="To" parent="Connect" index="3"]
+margin_left = 200.0
+margin_top = 0.0
+margin_right = 208.0
+margin_bottom = 27.0
 
 [node name="Display" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 52.0
-margin_right = 322.0
+margin_right = 321.0
 margin_bottom = 110.0
 
-[node name="Control" parent="." instance=ExtResource( 3 )]
+[node name="Title" parent="Display" index="0"]
+margin_right = 293.0
+margin_bottom = 27.0
+
+[node name="LineEdit" parent="Display" index="1"]
+margin_top = 31.0
+margin_right = 293.0
+margin_bottom = 58.0
+
+[node name="Line" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 111.0
-margin_right = 322.0
+margin_right = 321.0
 margin_bottom = 211.0
 rect_min_size = Vector2( 120, 100 )
 size_flags_vertical = 1
 
-[node name="Label" parent="Control" index="0"]
-margin_right = 294.0
+[node name="Title" parent="Line" index="0"]
+margin_right = 293.0
 margin_bottom = 27.0
 
-[node name="TextEdit" parent="Control" index="1"]
+[node name="LineText" parent="Line" index="1"]
 margin_top = 31.0
-margin_right = 294.0
+margin_right = 293.0
 margin_bottom = 100.0
 
-[node name="Callback" parent="." instance=ExtResource( 5 )]
+[node name="Callbacks" parent="." instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 212.0
-margin_right = 322.0
+margin_right = 321.0
 margin_bottom = 362.0
 rect_min_size = Vector2( 0, 150 )
 
-[node name="Title" parent="Callback" index="0"]
-margin_right = 294.0
-margin_bottom = 27.0
+[editable path="Connect"]
 
-[node name="HBoxContainer" parent="Callback" index="1"]
-margin_top = 31.0
-margin_right = 294.0
-margin_bottom = 58.0
+[editable path="Display"]
 
-[node name="LineEdit" parent="Callback/HBoxContainer" index="0"]
-margin_right = 248.0
-margin_bottom = 27.0
-
-[node name="AddButton" parent="Callback/HBoxContainer" index="1"]
-margin_left = 252.0
-margin_right = 294.0
-margin_bottom = 27.0
-
-[node name="CallbackList" parent="Callback" index="2" groups=[
-"dialog_nodes",
-]]
-margin_top = 62.0
-margin_right = 294.0
-margin_bottom = 150.0
-items = [ "Ítem 0", null, false ]
-
-[editable path="Control"]
-
-[editable path="Callback"]
+[editable path="Line"]

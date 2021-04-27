@@ -1,0 +1,3 @@
+extends DialogNode
+
+class_name DecisionNode

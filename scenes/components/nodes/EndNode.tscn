@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/tema.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/components/nodes/node_parts/Line.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/components/nodes/node_parts/Display.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/components/nodes/node_parts/RepeatCheck.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/components/nodes/node_parts/RestartCheck.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/nodes/node_parts/Connect.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/nodes/node_parts/Callback.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/EndNode.gd" type="Script" id=8]
 
 [node name="EndNode" type="GraphNode" groups=[
 "dialog_nodes",
@@ -16,9 +19,9 @@ margin_bottom = 0.520004
 theme = ExtResource( 1 )
 custom_colors/title_color = Color( 1, 0, 0, 1 )
 title = "EndNode"
-slot/0/left_enabled = false
+slot/0/left_enabled = true
 slot/0/left_type = 0
-slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/left_color = Color( 0.952941, 0.0156863, 0.0156863, 1 )
 slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
@@ -40,38 +43,149 @@ slot/3/left_color = Color( 1, 1, 1, 1 )
 slot/3/right_enabled = false
 slot/3/right_type = 0
 slot/3/right_color = Color( 1, 1, 1, 1 )
+slot/4/left_enabled = false
+slot/4/left_type = 0
+slot/4/left_color = Color( 1, 1, 1, 1 )
+slot/4/right_enabled = false
+slot/4/right_type = 0
+slot/4/right_color = Color( 1, 1, 1, 1 )
+slot/5/left_enabled = false
+slot/5/left_type = 0
+slot/5/left_color = Color( 1, 1, 1, 1 )
+slot/5/right_enabled = false
+slot/5/right_type = 0
+slot/5/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Display" parent="." instance=ExtResource( 3 )]
+[node name="Connect" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 24.0
 margin_right = 322.0
-margin_bottom = 82.0
+margin_bottom = 51.0
 
-[node name="Control" parent="." instance=ExtResource( 2 )]
+[node name="TitleFrom" parent="Connect" index="0"]
+margin_left = 102.0
+margin_top = 0.0
+margin_right = 160.0
+margin_bottom = 27.0
+
+[node name="From" parent="Connect" index="1"]
+margin_left = 164.0
+margin_top = 0.0
+margin_right = 192.0
+margin_bottom = 27.0
+text = "-1"
+
+[node name="TitleTo" parent="Connect" index="2"]
+visible = false
+margin_left = 165.0
+margin_top = 0.0
+margin_right = 203.0
+margin_bottom = 27.0
+
+[node name="To" parent="Connect" index="3"]
+visible = false
+margin_left = 191.0
+margin_top = 0.0
+margin_right = 219.0
+margin_bottom = 27.0
+text = "-1"
+
+[node name="Display" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 83.0
+margin_top = 52.0
 margin_right = 322.0
-margin_bottom = 122.0
+margin_bottom = 110.0
+
+[node name="Line" parent="." instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 111.0
+margin_right = 322.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 120, 100 )
+
+[node name="Callback" parent="." instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 212.0
+margin_right = 322.0
+margin_bottom = 362.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Title" parent="Callback" index="0"]
+margin_right = 294.0
+margin_bottom = 27.0
+
+[node name="HBoxContainer" parent="Callback" index="1"]
+margin_top = 31.0
+margin_right = 294.0
+margin_bottom = 58.0
+
+[node name="LineEdit" parent="Callback/HBoxContainer" index="0"]
+margin_right = 248.0
+margin_bottom = 27.0
+
+[node name="AddButton" parent="Callback/HBoxContainer" index="1"]
+margin_left = 252.0
+margin_right = 294.0
+margin_bottom = 27.0
+
+[node name="CallbackList" parent="Callback" index="2"]
+margin_top = 62.0
+margin_right = 294.0
+margin_bottom = 150.0
 
 [node name="Restart" parent="." instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 123.0
+margin_top = 363.0
 margin_right = 322.0
-margin_bottom = 150.0
+margin_bottom = 390.0
+size_flags_horizontal = 3
 
-[node name="Control2" parent="." instance=ExtResource( 4 )]
+[node name="Title" parent="Restart" index="0"]
+margin_top = 0.0
+margin_right = 128.0
+margin_bottom = 27.0
+
+[node name="Restart" parent="Restart" index="1"]
+margin_left = 132.0
+margin_right = 182.0
+margin_bottom = 27.0
+
+[node name="Repeat" parent="." instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 151.0
+margin_top = 391.0
 margin_right = 322.0
-margin_bottom = 178.0
+margin_bottom = 418.0
+
+[node name="Title" parent="Repeat" index="0"]
+margin_top = 0.0
+margin_right = 118.0
+margin_bottom = 27.0
+
+[node name="Repeat" parent="Repeat" index="1"]
+margin_left = 122.0
+margin_right = 172.0
+margin_bottom = 27.0
+
+[editable path="Connect"]
+
+[editable path="Callback"]
+
+[editable path="Restart"]
+
+[editable path="Repeat"]

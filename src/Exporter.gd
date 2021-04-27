@@ -22,10 +22,41 @@ func export_to_json(nodes_to_export : Array, path : String, name : String) -> vo
 	assert( nodes_to_export != null)
 
 	for i in nodes_to_export:
-		#export_dic[nodes_to_export[i].get_dialog_index()] = nodes_to_export[i].get_dialog_type()
-		#export_dic[i.get_dialog_index()] = i.get_dialog_type()
-		print(i.name)
+		
+		if i.get_dialog_type() == "normal":
+			export_dic[i.get_dialog_index()] = _parse_simple_node(i)
+		elif i.get_dialog_type() == "decision":
+			pass
+		elif i.get_dialog_type() == "end":
+			export_dic[i.get_dialog_index()] = _parse_end_node(i)
+		
 
-	#print(export_dic)
+	print(export_dic)
 
 
+
+
+func _parse_simple_node(node : DialogNode) -> Dictionary:
+	
+	var node_tree_dic : Dictionary
+		
+	node_tree_dic['type'] = node.get_dialog_type()
+	node_tree_dic['display'] = node.get_display()
+	node_tree_dic['line'] = node.get_line()
+	node_tree_dic['callbacks'] = node.get_callbacks()
+	node_tree_dic['pointer'] = node.get_pointer()
+
+	return node_tree_dic
+
+func _parse_end_node(node : EndNode) -> Dictionary:
+	
+	var node_tree_dic : Dictionary = _parse_simple_node(node)
+	
+	node_tree_dic['repeat'] = node.is_repeat()
+	node_tree_dic['restart'] = node.is_restart()
+
+
+	return node_tree_dic
+
+func _parse_decision_node(node : DialogNode) -> Dictionary:
+	return {}

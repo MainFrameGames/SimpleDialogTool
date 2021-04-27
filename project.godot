@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "GraphNode",
+"class": "DialogNode",
+"language": "GDScript",
+"path": "res://src/DialogNode.gd"
+}, {
 "base": "Control",
 "class": "Editor",
 "language": "GDScript",
 "path": "res://src/Editor.gd"
+}, {
+"base": "DialogNode",
+"class": "EndNode",
+"language": "GDScript",
+"path": "res://src/EndNode.gd"
 }, {
 "base": "Node",
 "class": "Events",
@@ -30,7 +40,9 @@ _global_script_classes=[ {
 "path": "res://src/SimpleNode.gd"
 } ]
 _global_script_class_icons={
+"DialogNode": "",
 "Editor": "",
+"EndNode": "",
 "Events": "",
 "Exporter": "",
 "SimpleNode": ""

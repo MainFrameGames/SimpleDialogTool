@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Editor.gd" type="Script" id=1]
+[ext_resource path="res://resources/tema.tres" type="Theme" id=2]
+[ext_resource path="res://scenes/Toolbar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Toolbar.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/windows/FileDialog.tscn" type="PackedScene" id=6]
+
+[node name="Editor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 240.0
+margin_top = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toolbar" type="Control" parent="." instance=ExtResource( 3 )]
+anchor_right = 1.0
+anchor_bottom = 0.03
+margin_bottom = -0.399998
+theme = ExtResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="." instance=ExtResource( 6 )]
+anchor_left = 0.504
+anchor_top = 0.474
+anchor_right = 0.504
+anchor_bottom = 0.474
+margin_left = -567.68
+margin_top = -325.92
+margin_right = 568.32
+margin_bottom = 392.08
+resizable = true
+
+[node name="Control2" type="Control" parent="."]
+margin_top = 42.0
+margin_right = 240.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Tree" parent="Control2" instance=ExtResource( 5 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+
+[node name="Panel" type="Panel" parent="Control2"]
+anchor_top = -0.002
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.0760002
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control2/Panel"]
+anchor_right = 1.0
+anchor_bottom = 0.028
+margin_top = 4.0
+margin_bottom = 1.88
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control2/Panel/CenterContainer"]
+margin_left = 91.0
+margin_right = 149.0
+margin_bottom = 27.0
+text = "Nodos"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="disconnection_request" from="GraphEdit" to="." method="_on_disconnection_request"]

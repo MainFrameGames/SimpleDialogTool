@@ -1,19 +1,19 @@
 [gd_scene format=2]
 
-[node name="Restart" type="HBoxContainer"]
+[node name="RestartCheck" type="HBoxContainer"]
 anchor_right = 0.1625
 anchor_bottom = 0.0518519
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="."]
-margin_top = 20.0
+[node name="Title" type="Label" parent="."]
+margin_top = 21.0
 margin_right = 97.0
-margin_bottom = 34.0
+margin_bottom = 35.0
 text = "RESTART MODE"
 
-[node name="CheckButton" type="CheckButton" parent="."]
+[node name="Restart" type="CheckButton" parent="."]
 margin_left = 101.0
 margin_right = 177.0
-margin_bottom = 55.0
+margin_bottom = 56.0

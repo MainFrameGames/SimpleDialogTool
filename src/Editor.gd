@@ -14,7 +14,6 @@ onready var instance_index : int = 0
 
 var save_path : String
 var current_hash : String
-var graph_nodes : Array
 var graph_edit : GraphEdit
 var scene_hash : String
 var saved : bool
@@ -36,7 +35,7 @@ func _ready():
 	graph_edit.connect("connection_request",self,"_on_connection_request")
 	#graph_edit.connect("disconnection_request",self,"_on_disconnection_request")
 
-	save_file(Main.DEFAULT_SAVE_PATH)
+	#save_file(Main.DEFAULT_SAVE_PATH)
 	
 
 
@@ -46,7 +45,15 @@ func _on_connection_request(from, from_slot, to, to_slot) -> void:
 	
 	graph_edit.connect_node(from,from_slot,to,to_slot)
 
-	print(graph_edit.get_connection_list())
+	# Actualizar el índice del nodo al que se conecta
+	# Esta llamada es muy confusa, sustituir por algo más legible TODO
+	#get_node(from).set_index(get_node(to).get_index())
+	var origin_node = get_node("GraphEdit/" + from)
+	var arrival_node = get_node("GraphEdit/" + to)
+
+	origin_node.set_pointer(arrival_node.get_index())
+
+	#print(graph_edit.get_connection_list())
 
 
 
@@ -57,7 +64,6 @@ func on_export_menu_item_selected(menu_item : int) -> void:
 	
 	match menu_item:
 		Main.EXPORT_TYPES.JSON:
-			print("json")
 			exporter.export_to_json(get_tree().get_nodes_in_group("dialog_nodes"),"res://exported/","test_name")
 		_:
 			pass
@@ -77,11 +83,10 @@ func spawn_node(node_type) -> void:
 	if instance_index > 0:
 		node_to_spawn.offset *= instance_index
 
-	node_to_spawn.set_index(instance_index)
 
-	graph_nodes.append(node_to_spawn)
 	graph_edit.add_child(node_to_spawn)		
-
+	node_to_spawn.set_index(instance_index)
+	
 	instance_index += 1
 	
 
