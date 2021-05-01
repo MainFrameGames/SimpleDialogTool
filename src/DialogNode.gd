@@ -4,63 +4,71 @@ extends GraphNode
 
 class_name DialogNode
 
+signal dialog_node_deleted(dialog_node_index)
+
 # Node Type
 var type : String
 # Dialog numeric ID
-var index : int
-
+var index_from : Label
+# Dialog pointer 
+var index_to : Label
+# Control para indicar en que Displayer se mostrara el dialogo
 var display_control : LineEdit
+# Control para la línea de diálogo de este nodo
 var line_control : TextEdit
-var pointer_control : Label
+
 
 
 func _ready():
-    connect("close_request",self,"_on_close_request")
-    connect("resize_request",self,"_on_rezize_request")
+	# Señales de cierrre y resize
+	connect("close_request",self,"_on_close_request")
+	connect("resize_request",self,"_on_rezize_request")
 
-    
-func set_index(index : int) -> void:
-    pass
-
-    
-func set_pointer(index : int) -> void:
-    pass
-
+# Callback de cierre
 func _on_close_request() -> void:
-    queue_free()
+	emit_signal("dialog_node_deleted",index_from.text as int)
+	# Remove al node connections before deleting
+	clear_all_slots()
+	#clear_slot(0)
+	queue_free()
 
+
+# Callback de resize del nodo
 func _on_rezize_request(new_size) -> void:
-    rect_size = new_size
+	rect_size = new_size
 
 
-func get_index() -> int:
-    print("Override this function")
-    return -999999
-    
-
-
-func node_to_string() -> String:
-    print("Override this function")
-    return ""
+# Métodos de la clase
 
 func get_dialog_type() -> String:
-    return type
-
-func get_dialog_index() -> int:
-    return index
-
-func get_line() -> String:
-    print("Override this function")
-    return ""
-
-func get_callbacks() -> Array:
-    print("Override this function")
-    return []
+	return type
 
 func get_display() -> String:
-    print("Override this function")
-    return ""
+	return display_control.text
 
-func get_pointer() -> int:
-    print("Override this function")
-    return -99999
+func get_line() -> String:
+	return line_control.text
+
+# Metodos para ser sobrescritos en cada nodo específico para que respondan según el tipo
+
+func set_index_from(index : int) -> void:
+	pass
+
+	
+func set_index_to(index : int) -> void:
+	pass
+
+
+func get_index_from() -> int:
+	print("Override this function")
+	return -999999
+	
+
+func get_index_to() -> int:
+	print("Override this function")
+	return -99999
+
+	
+func get_callbacks() -> Array:
+	print("Override this function")
+	return []

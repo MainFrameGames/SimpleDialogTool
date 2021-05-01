@@ -28,7 +28,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
+margin_right = 1920.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -45,7 +45,7 @@ __meta__ = {
 margin_right = 122.0
 margin_bottom = 40.0
 text = "Añadir Nodo"
-items = [ "Simple Node", null, 0, false, false, 0, 0, null, "", false, "Choice Node", null, 0, false, false, 1, 0, null, "", false, "End Node", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "Simple Node", null, 0, false, false, 0, 0, null, "", false, "Choice Node", null, 0, false, false, 1, 0, null, "", false, "End Node", null, 0, false, false, 2, 0, null, "", false, "Begin Node", null, 0, false, false, 3, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="Exportar" type="MenuButton" parent="HBoxContainer"]

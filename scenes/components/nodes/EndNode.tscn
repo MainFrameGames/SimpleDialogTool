@@ -113,7 +113,16 @@ margin_right = 322.0
 margin_bottom = 211.0
 rect_min_size = Vector2( 120, 100 )
 
-[node name="Callback" parent="." instance=ExtResource( 7 )]
+[node name="Title" parent="Line" index="0"]
+margin_right = 294.0
+margin_bottom = 27.0
+
+[node name="LineText" parent="Line" index="1"]
+margin_top = 31.0
+margin_right = 294.0
+margin_bottom = 100.0
+
+[node name="Callbacks" parent="." instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
@@ -121,29 +130,6 @@ margin_top = 212.0
 margin_right = 322.0
 margin_bottom = 362.0
 rect_min_size = Vector2( 0, 150 )
-
-[node name="Title" parent="Callback" index="0"]
-margin_right = 294.0
-margin_bottom = 27.0
-
-[node name="HBoxContainer" parent="Callback" index="1"]
-margin_top = 31.0
-margin_right = 294.0
-margin_bottom = 58.0
-
-[node name="LineEdit" parent="Callback/HBoxContainer" index="0"]
-margin_right = 248.0
-margin_bottom = 27.0
-
-[node name="AddButton" parent="Callback/HBoxContainer" index="1"]
-margin_left = 252.0
-margin_right = 294.0
-margin_bottom = 27.0
-
-[node name="CallbackList" parent="Callback" index="2"]
-margin_top = 62.0
-margin_right = 294.0
-margin_bottom = 150.0
 
 [node name="Restart" parent="." instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -184,7 +170,7 @@ margin_bottom = 27.0
 
 [editable path="Connect"]
 
-[editable path="Callback"]
+[editable path="Line"]
 
 [editable path="Restart"]
 

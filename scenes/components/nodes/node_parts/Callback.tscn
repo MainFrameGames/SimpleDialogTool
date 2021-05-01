@@ -22,18 +22,40 @@ margin_right = 255.0
 margin_bottom = 42.0
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
-margin_right = 210.0
+margin_right = 141.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="AddButton" type="Button" parent="HBoxContainer"]
-margin_left = 214.0
-margin_right = 255.0
+margin_left = 145.0
+margin_right = 186.0
 margin_bottom = 24.0
 text = "ADD"
+
+[node name="RemoveButton" type="Button" parent="HBoxContainer"]
+margin_left = 190.0
+margin_right = 255.0
+margin_bottom = 24.0
+text = "REMOVE"
 
 [node name="CallbackList" type="ItemList" parent="."]
 margin_top = 46.0
 margin_right = 255.0
 margin_bottom = 168.0
 size_flags_vertical = 3
+
+[node name="EmptyCallbackWarningDialog" type="AcceptDialog" parent="."]
+margin_top = 110.0
+margin_right = 258.0
+margin_bottom = 168.0
+popup_exclusive = true
+window_title = "¡Alerta!"
+dialog_text = "No se puede añadir una callback vacía"
+
+[node name="RepeatedCallbackWarningDialog" type="AcceptDialog" parent="."]
+margin_top = 110.0
+margin_right = 320.0
+margin_bottom = 168.0
+popup_exclusive = true
+window_title = "¡Alerta!"
+dialog_text = "Los nombres de las callbacks han de ser únicos"

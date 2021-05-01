@@ -3,26 +3,30 @@
 [ext_resource path="res://resources/tema.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/components/nodes/node_parts/Display.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/components/nodes/node_parts/Line.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/DecisionNode.gd" type="Script" id=4]
-[ext_resource path="res://scenes/components/nodes/node_parts/DecisionControl.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/components/nodes/node_parts/Connect.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/nodes/node_parts/Connect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/nodes/node_parts/Callback.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/BeginNode.gd" type="Script" id=6]
 
-[node name="DecisionNode" type="GraphNode" groups=[
+[node name="BeginNode" type="GraphNode" groups=[
 "dialog_nodes",
 ]]
-anchor_right = 0.182
-anchor_bottom = 0.231
-margin_right = 0.559967
-margin_bottom = 0.519989
+anchor_left = 0.306
+anchor_top = 0.000925926
+anchor_right = 0.488729
+anchor_bottom = 0.341222
+margin_left = 0.47998
+margin_right = -0.360107
+margin_bottom = -0.519989
 theme = ExtResource( 1 )
-title = "ChoiceNode"
+title = "SimpleNode"
 show_close = true
-slot/0/left_enabled = true
+resizable = true
+slot/0/left_enabled = false
 slot/0/left_type = 0
-slot/0/left_color = Color( 1, 1, 1, 1 )
-slot/0/right_enabled = false
+slot/0/left_color = Color( 0.541176, 0.0666667, 0.807843, 1 )
+slot/0/right_enabled = true
 slot/0/right_type = 0
-slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/0/right_color = Color( 0.313726, 1, 0, 1 )
 slot/1/left_enabled = false
 slot/1/left_type = 0
 slot/1/left_color = Color( 1, 1, 1, 1 )
@@ -34,20 +38,19 @@ slot/2/left_type = 0
 slot/2/left_color = Color( 1, 1, 1, 1 )
 slot/2/right_enabled = false
 slot/2/right_type = 0
-slot/2/right_color = Color( 1, 1, 1, 1 )
+slot/2/right_color = Color( 0.541176, 0.0666667, 0.807843, 1 )
 slot/3/left_enabled = false
 slot/3/left_type = 0
 slot/3/left_color = Color( 1, 1, 1, 1 )
 slot/3/right_enabled = false
 slot/3/right_type = 0
-slot/3/right_color = Color( 1, 1, 1, 1 )
-script = ExtResource( 4 )
+slot/3/right_color = Color( 0.541176, 0.0666667, 0.807843, 1 )
+script = ExtResource( 6 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
-decision_control = ExtResource( 5 )
 
-[node name="Connect" parent="." instance=ExtResource( 6 )]
+[node name="Connect" parent="." instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
@@ -56,29 +59,28 @@ margin_right = 321.0
 margin_bottom = 51.0
 
 [node name="TitleFrom" parent="Connect" index="0"]
-margin_left = 111.0
+margin_left = 79.0
 margin_top = 0.0
-margin_right = 169.0
+margin_right = 137.0
 margin_bottom = 27.0
 
 [node name="From" parent="Connect" index="1"]
-margin_left = 173.0
+margin_left = 141.0
 margin_top = 0.0
-margin_right = 181.0
+margin_right = 159.0
 margin_bottom = 27.0
+text = "0"
 
 [node name="TitleTo" parent="Connect" index="2"]
-visible = false
-margin_left = 164.0
+margin_left = 163.0
 margin_top = 0.0
-margin_right = 202.0
+margin_right = 201.0
 margin_bottom = 27.0
 
 [node name="To" parent="Connect" index="3"]
-visible = false
-margin_left = 200.0
+margin_left = 205.0
 margin_top = 0.0
-margin_right = 208.0
+margin_right = 213.0
 margin_bottom = 27.0
 
 [node name="Display" parent="." instance=ExtResource( 2 )]
@@ -89,13 +91,24 @@ margin_top = 52.0
 margin_right = 321.0
 margin_bottom = 110.0
 
+[node name="Title" parent="Display" index="0"]
+margin_right = 293.0
+margin_bottom = 27.0
+
+[node name="LineEdit" parent="Display" index="1"]
+margin_top = 31.0
+margin_right = 293.0
+margin_bottom = 58.0
+
 [node name="Line" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 111.0
 margin_right = 321.0
-margin_bottom = 150.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 120, 100 )
+size_flags_vertical = 1
 
 [node name="Title" parent="Line" index="0"]
 margin_right = 293.0
@@ -104,15 +117,19 @@ margin_bottom = 27.0
 [node name="LineText" parent="Line" index="1"]
 margin_top = 31.0
 margin_right = 293.0
-margin_bottom = 39.0
+margin_bottom = 100.0
 
-[node name="AddDecision" type="Button" parent="."]
+[node name="Callbacks" parent="." instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 151.0
+margin_top = 212.0
 margin_right = 321.0
-margin_bottom = 178.0
-text = "Add decision"
+margin_bottom = 362.0
+rect_min_size = Vector2( 0, 150 )
 
 [editable path="Connect"]
+
+[editable path="Display"]
 
 [editable path="Line"]

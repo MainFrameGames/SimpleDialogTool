@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "DecisionControl",
+"language": "GDScript",
+"path": "res://src/DecisionControl.gd"
+}, {
+"base": "DialogNode",
+"class": "DecisionNode",
+"language": "GDScript",
+"path": "res://src/DecisionNode.gd"
+}, {
 "base": "GraphNode",
 "class": "DialogNode",
 "language": "GDScript",
@@ -34,17 +44,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Exporter.gd"
 }, {
+"base": "Node",
+"class": "IndexStack",
+"language": "GDScript",
+"path": "res://src/IndexStack.gd"
+}, {
 "base": "GraphNode",
 "class": "SimpleNode",
 "language": "GDScript",
 "path": "res://src/SimpleNode.gd"
 } ]
 _global_script_class_icons={
+"DecisionControl": "",
+"DecisionNode": "",
 "DialogNode": "",
 "Editor": "",
 "EndNode": "",
 "Events": "",
 "Exporter": "",
+"IndexStack": "",
 "SimpleNode": ""
 }
 
