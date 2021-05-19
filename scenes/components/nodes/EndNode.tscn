@@ -12,10 +12,12 @@
 [node name="EndNode" type="GraphNode" groups=[
 "dialog_nodes",
 ]]
-anchor_right = 0.182
-anchor_bottom = 0.231
-margin_right = 0.559998
-margin_bottom = 0.520004
+anchor_right = 0.183
+anchor_bottom = 0.369
+margin_left = 1.0
+margin_top = 2.0
+margin_right = -0.360016
+margin_bottom = -0.52002
 theme = ExtResource( 1 )
 custom_colors/title_color = Color( 1, 0, 0, 1 )
 title = "EndNode"
@@ -66,18 +68,20 @@ anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 24.0
 margin_right = 322.0
-margin_bottom = 51.0
+margin_bottom = 24.0
 
 [node name="TitleFrom" parent="Connect" index="0"]
-margin_left = 102.0
+visible = false
+margin_left = 118.0
 margin_top = 0.0
-margin_right = 160.0
+margin_right = 176.0
 margin_bottom = 27.0
 
 [node name="From" parent="Connect" index="1"]
-margin_left = 164.0
+visible = false
+margin_left = 133.0
 margin_top = 0.0
-margin_right = 192.0
+margin_right = 161.0
 margin_bottom = 27.0
 text = "-1"
 
@@ -100,17 +104,17 @@ text = "-1"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 52.0
+margin_top = 25.0
 margin_right = 322.0
-margin_bottom = 110.0
+margin_bottom = 83.0
 
 [node name="Line" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 111.0
+margin_top = 84.0
 margin_right = 322.0
-margin_bottom = 211.0
+margin_bottom = 184.0
 rect_min_size = Vector2( 120, 100 )
 
 [node name="Title" parent="Line" index="0"]
@@ -122,22 +126,13 @@ margin_top = 31.0
 margin_right = 294.0
 margin_bottom = 100.0
 
-[node name="Callbacks" parent="." instance=ExtResource( 7 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 28.0
-margin_top = 212.0
-margin_right = 322.0
-margin_bottom = 362.0
-rect_min_size = Vector2( 0, 150 )
-
 [node name="Restart" parent="." instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 363.0
+margin_top = 185.0
 margin_right = 322.0
-margin_bottom = 390.0
+margin_bottom = 212.0
 size_flags_horizontal = 3
 
 [node name="Title" parent="Restart" index="0"]
@@ -147,16 +142,16 @@ margin_bottom = 27.0
 
 [node name="Restart" parent="Restart" index="1"]
 margin_left = 132.0
-margin_right = 182.0
+margin_right = 294.0
 margin_bottom = 27.0
 
 [node name="Repeat" parent="." instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 391.0
+margin_top = 213.0
 margin_right = 322.0
-margin_bottom = 418.0
+margin_bottom = 240.0
 
 [node name="Title" parent="Repeat" index="0"]
 margin_top = 0.0
@@ -165,13 +160,18 @@ margin_bottom = 27.0
 
 [node name="Repeat" parent="Repeat" index="1"]
 margin_left = 122.0
-margin_right = 172.0
 margin_bottom = 27.0
 
+[node name="Callbacks" parent="." instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 241.0
+margin_right = 322.0
+margin_bottom = 391.0
+rect_min_size = Vector2( 0, 150 )
+
 [editable path="Connect"]
-
 [editable path="Line"]
-
 [editable path="Restart"]
-
 [editable path="Repeat"]

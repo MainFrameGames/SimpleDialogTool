@@ -129,7 +129,5 @@ margin_bottom = 362.0
 rect_min_size = Vector2( 0, 150 )
 
 [editable path="Connect"]
-
 [editable path="Display"]
-
 [editable path="Line"]

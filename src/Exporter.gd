@@ -64,10 +64,9 @@ func _parse_simple_node(node : DialogNode) -> Dictionary:
 	node_tree_dic['display'] = node.get_display()
 	node_tree_dic['line'] = node.get_line()
 
-	if node.get_dialog_type() == "normal":
+	if node.get_dialog_type() != "decision":
 		node_tree_dic['callbacks'] = node.get_callbacks()
-
-	node_tree_dic['pointer'] = node.get_index_to()
+		node_tree_dic['pointer'] = node.get_index_to()
 
 	return node_tree_dic
 

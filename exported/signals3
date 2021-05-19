@@ -1,0 +1,6 @@
+extends Node
+
+signal test3
+signal test4
+signal test2
+signal test

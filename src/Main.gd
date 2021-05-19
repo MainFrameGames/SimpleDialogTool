@@ -1,7 +1,7 @@
 extends Node
 
 enum NODE_TYPES {NORMAL = 0, CHOICE = 1, END = 2, BEGIN = 3}
-enum EXPORT_TYPES {JSON = 0, GDSCRIPT = 1, SIGNALS = 2}
+enum EXPORT_TYPES {JSON = 0, GDSCRIPT = 1, SIGNALS = 2, PROJECT = 3}
 
 const DEFAULT_SAVE_PATH : String = "res://tmp/"
 const UID : String = "xyz.mfgames.SDT.EDITOR_FILE"

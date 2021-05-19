@@ -63,6 +63,17 @@ func get_decisions() -> Dictionary:
 	return decisions_dictionary
 
 
+func get_callbacks() -> Array:
+	var callbacks : Array
+	var decision_nodes : Array = get_tree().get_nodes_in_group("decision_control")
+
+	for decision in decision_nodes:
+		var decision_callbacks : Array = decision.get_decision_callbacks()
+		for i in decision_callbacks:
+			callbacks.append(i)
+
+	return callbacks
+
 func set_decision_index(slot_index : int, index : int) -> void:
 	#decision.get_node("Connect/To").text = index as String
 	print(slot_index)

@@ -18,6 +18,7 @@ var scene_hash : String
 var saved : bool
 var file_dialog : FileDialog
 var export_mode : int
+
 var alert_dialog : AcceptDialog
 
 
@@ -25,6 +26,7 @@ var alert_dialog : AcceptDialog
 
 func _ready():
 	graph_edit = get_node("GraphEdit")
+	#graph_edit.set_owner(self)
 	alert_dialog = get_node("AlertDialog")
 	file_dialog = get_node("FileDialog")
 	saved = false
@@ -33,12 +35,12 @@ func _ready():
 	Main.EVENTS.connect("export_menu_item_selected",self,"on_export_menu_item_selected")
 	Main.EVENTS.connect("exit_editor",self,"_on_exit_editor")
 	
+	Main.EVENTS.connect("save_project",self,"_on_save_project")
 
 	# Señales de Graph Edit
 
 	graph_edit.connect("connection_request",self,"_on_connection_request")
 	file_dialog.connect("file_selected",self,"_on_save_exported_file")
-	#graph_edit.connect("disconnection_request",self,"_on_disconnection_request")
 
 	#save_file(Main.DEFAULT_SAVE_PATH)
 	
@@ -46,8 +48,30 @@ func _ready():
 
 func _on_disconnection_request(from, from_slot, to, to_slot):
 	graph_edit.disconnect_node(from,from_slot,to,to_slot)
-	
 
+	
+func _on_delete_request(node_to_delete : DialogNode) -> void:
+	# Save the deleted index to indexes stack
+	index_stack.remove_index(node_to_delete.get_index_from())
+
+
+	var connection_list : Array = graph_edit.get_connection_list()
+
+	for connection in connection_list:
+	
+		var node_to_disconnect = get_node("GraphEdit/" + connection['to'])
+		# Delete indexes
+		if node_to_disconnect.name == node_to_delete.name:
+			node_to_disconnect.clear_index_to()
+			print("clear index")
+			# Disconnect slots
+			node_to_disconnect.clear_slot(0)
+
+	# Clear all connections from the node itself
+	node_to_delete.clear_all_slots()
+	# Delete node
+	node_to_delete.queue_free()
+	
 
 func _on_connection_request(from, from_slot, to, to_slot) -> void:
 	
@@ -63,26 +87,31 @@ func _on_connection_request(from, from_slot, to, to_slot) -> void:
 	else:
 		origin_node.set_index_to(arrival_node.get_index_from())
 
-	print(graph_edit.get_connection_list())
+	
 
 
 func _on_dialog_node_deleted(dialog_node_index : int) -> void:
-	index_stack.remove_index(dialog_node_index)
+	pass
 
 
 func on_add_menu_item_selected(node_type) -> void:
 
 	if !begin_node_exists() && node_type != Main.NODE_TYPES.BEGIN:
-		print("Añade primero un begin node")
+		show_alert("Operacion no permitida","Añade primero un nodo de tipo begin")
 	elif begin_node_exists() && node_type == Main.NODE_TYPES.BEGIN:
-		print("Ya existe un nodo de tipo begin")
+		show_alert("Operacion no permitida","Ya existe un nodo de tipo begin")
 	else:
 		spawn_node(node_type)
 
 func _on_save_exported_file(path : String) -> void:
+	if export_mode == Main.EXPORT_TYPES.PROJECT:
+		save_file(path)
+	else:		
 		exporter.export_dialog(get_tree().get_nodes_in_group("dialog_nodes"),path,export_mode)
 		
-		
+func _on_save_project() -> void:
+	export_mode = Main.EXPORT_TYPES.PROJECT
+	file_dialog.popup_centered()
 
 
 func on_export_menu_item_selected(menu_item : int) -> void:
@@ -109,17 +138,20 @@ func spawn_node(node_type) -> void:
 	node_to_spawn.offset += INITIAL_POSITION
 	node_to_spawn.offset *= offset_index
 	offset_index += 1
+
+
+	# Connect signal for deleting node
+	node_to_spawn.connect("delete_node",self,"_on_delete_request")
 	
 	# Spawn node
 	graph_edit.add_child(node_to_spawn)		
-
+	# Set owner
+	node_to_spawn.owner = self
 	# Set node index from the stack only if is not a begin node
 
 	if node_to_spawn.get_dialog_type() != "begin":
 		node_to_spawn.set_index_from(index_stack.get_new_index())
 	
-	# Connect deleted signal 
-	node_to_spawn.connect("dialog_node_deleted",self,"_on_dialog_node_deleted")
 
 func begin_node_exists() -> bool:
 	var nodes = get_tree().get_nodes_in_group("dialog_nodes")
@@ -156,13 +188,16 @@ func save_file(path) -> void:
 	var packed_scene = PackedScene.new()
 	packed_scene.pack(get_tree().get_current_scene())
 	
-	ResourceSaver.save(path 
-	+ "editor_file_" 
-	+ String(OS.get_system_time_secs()) 
-	+ ".tscn",packed_scene)
+	ResourceSaver.save(path + ".tscn",packed_scene)
 	save_path = path	
 	#generate_hash()
-		
+
+# UTILS
+
+func show_alert(title : String, message : String) -> void:
+	alert_dialog.window_title = title
+	alert_dialog.dialog_text = message
+	alert_dialog.popup_centered()
 
 func get_uid() -> String:
 	return Main.UID

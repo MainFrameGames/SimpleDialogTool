@@ -4,7 +4,7 @@ extends GraphNode
 
 class_name DialogNode
 
-signal dialog_node_deleted(dialog_node_index)
+signal delete_node(dialog_node)
 
 # Node Type
 var type : String
@@ -26,11 +26,7 @@ func _ready():
 
 # Callback de cierre
 func _on_close_request() -> void:
-	emit_signal("dialog_node_deleted",index_from.text as int)
-	# Remove al node connections before deleting
-	clear_all_slots()
-	#clear_slot(0)
-	queue_free()
+	emit_signal("delete_node",self)
 
 
 # Callback de resize del nodo
@@ -58,6 +54,11 @@ func set_index_from(index : int) -> void:
 func set_index_to(index : int) -> void:
 	pass
 
+func clear_index_to() -> void:
+	if index_to != null:
+		print("clear_index_to_Method")
+		index_to.text = ""
+	
 
 func get_index_from() -> int:
 	print("Override this function")

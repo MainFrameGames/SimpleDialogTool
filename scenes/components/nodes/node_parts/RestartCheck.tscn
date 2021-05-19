@@ -15,5 +15,6 @@ text = "RESTART MODE"
 
 [node name="Restart" type="CheckButton" parent="."]
 margin_left = 101.0
-margin_right = 177.0
+margin_right = 312.0
 margin_bottom = 56.0
+size_flags_horizontal = 3

@@ -1,0 +1,158 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Editor.gd" type="Script" id=1]
+[ext_resource path="res://resources/tema.tres" type="Theme" id=2]
+[ext_resource path="res://scenes/Toolbar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/windows/FileDialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Toolbar.gd" type="Script" id=6]
+
+[node name="Editor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toolbar" type="Control" parent="." instance=ExtResource( 3 )]
+anchor_right = 1.0
+anchor_bottom = 0.03
+margin_bottom = 7.6
+theme = ExtResource( 2 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Toolbar" index="0"]
+margin_right = 1920.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="Toolbar" index="1"]
+anchor_right = 1.0
+anchor_bottom = 0.037
+margin_bottom = 40.04
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Toolbar" index="2"]
+margin_right = 1920.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar" index="3"]
+anchor_right = 1.0
+anchor_bottom = 0.037
+margin_right = 410.0
+margin_bottom = 25.52
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AñadirNodo" type="MenuButton" parent="Toolbar/HBoxContainer" index="0"]
+margin_right = 122.0
+margin_bottom = 27.0
+text = "Añadir Nodo"
+items = [ "Simple Node", null, 0, false, false, 0, 0, null, "", false, "Choice Node", null, 0, false, false, 1, 0, null, "", false, "End Node", null, 0, false, false, 2, 0, null, "", false, "Begin Node", null, 0, false, false, 3, 0, null, "", false ]
+switch_on_hover = true
+
+[node name="Exportar" type="MenuButton" parent="Toolbar/HBoxContainer" index="1"]
+margin_left = 126.0
+margin_right = 218.0
+margin_bottom = 27.0
+text = "Exportar"
+items = [ "Export JSON", null, 0, false, false, 0, 0, null, "", false, "Export to GDScript ", null, 0, false, false, 1, 0, null, "", false, "Export Signals", null, 0, false, false, 2, 0, null, "", false ]
+switch_on_hover = true
+
+[node name="Guardar" type="Button" parent="Toolbar/HBoxContainer" index="2"]
+margin_left = 222.0
+margin_right = 304.0
+margin_bottom = 27.0
+text = "Guardar"
+
+[node name="Salir" type="Button" parent="Toolbar/HBoxContainer" index="3"]
+margin_left = 308.0
+margin_right = 450.0
+margin_bottom = 27.0
+text = "Salir del SDT"
+
+[node name="Control2" type="Control" parent="."]
+visible = false
+margin_top = 42.0
+margin_right = 240.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Tree" parent="Control2" instance=ExtResource( 4 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+
+[node name="Panel" type="Panel" parent="Control2"]
+anchor_top = -0.002
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.0760002
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control2/Panel"]
+anchor_right = 1.0
+anchor_bottom = 0.028
+margin_top = 4.0
+margin_bottom = 1.88
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control2/Panel/CenterContainer"]
+margin_left = 91.0
+margin_right = 149.0
+margin_bottom = 27.0
+text = "Nodos"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AlertDialog" type="AcceptDialog" parent="."]
+margin_right = 128.0
+margin_bottom = 78.0
+window_title = "¡Alerta!"
+
+[node name="FileDialog" type="FileDialog" parent="." instance=ExtResource( 5 )]
+visible = true
+anchor_left = 0.504
+anchor_top = 0.474
+anchor_right = 0.504
+anchor_bottom = 0.474
+margin_left = -575.68
+margin_top = -333.11
+margin_right = 560.32
+margin_bottom = 384.89
+resizable = true
+access = 2
+current_dir = "/home/kalaix/current/SimpleDialogTool/exported"
+current_file = "prueba1"
+current_path = "/home/kalaix/current/SimpleDialogTool/exported/prueba1"
+
+[connection signal="disconnection_request" from="GraphEdit" to="." method="_on_disconnection_request"]
+
+[editable path="Toolbar"]
