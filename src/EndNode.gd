@@ -61,9 +61,10 @@ func is_restart() -> bool:
 
 func _on_restart_checked() -> void:
 	print(restart_button.toggle_mode)
-	if repeat_button.toggle_mode:
-		restart_button.toggle_mode = false
+	#if repeat_button.toggle_mode:
+	#	restart_button.toggle_mode = false
 
 func _on_repeat_checked() -> void:
-	if restart_button.toggle_mode:
-		restart_button.toggle_mode = false
+	#if restart_button.toggle_mode:
+	#	restart_button.toggle_mode = false
+	pass

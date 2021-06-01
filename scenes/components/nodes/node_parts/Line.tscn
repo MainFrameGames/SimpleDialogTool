@@ -3,7 +3,6 @@
 [node name="Control" type="VBoxContainer"]
 anchor_right = 0.117188
 anchor_bottom = 0.137963
-size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": true
 }

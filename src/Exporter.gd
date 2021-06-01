@@ -1,15 +1,21 @@
 extends Node
 
+
+# Handles the exporting of the nodes to other formats such as JSON
+# Also exports the callbacks of the project as signals
 class_name Exporter
 
 
-
+# Exports all the nodes callbacks in to signals, in a gdscript format to load
+# resource
 func export_project_callbacks(dialog_nodes : Array) -> String:
+	## Append extends node at the first line to be a valid gdscript file
 	var exported_callbacks : String = "extends Node\n\n"
 	
 	for i in dialog_nodes:
 		var callbacks : Array = i.get_callbacks()
 		for y in callbacks:
+			# Add it as signals
 			exported_callbacks += "signal " + y + "\n"
 	
 	return exported_callbacks
@@ -18,20 +24,22 @@ func export_project_callbacks(dialog_nodes : Array) -> String:
 
 func export_dialog(nodes_to_export : Array, path : String, export_type : int) -> void:
 
-	assert( nodes_to_export != null)
-	#var export_dic : Dictionary = parse_dialog(nodes_to_export)
+	assert(nodes_to_export != null)
 
 	var f = File.new()
 	f.open(path, File.WRITE)
-	
+	# Export according to the export type and file extension
 	match export_type:
 		Main.EXPORT_TYPES.JSON:
+			# JSON export
 			path += ".json"
 			f.store_line(to_json(parse_dialog(nodes_to_export)))
 		Main.EXPORT_TYPES.GDSCRIPT:
+			# Gdscript binary file
 			path += ".gd"
 			f.store_var(parse_dialog(nodes_to_export))
 		Main.EXPORT_TYPES.SIGNALS:
+			# signals exported
 			path += ".gd"
 			print(path)
 			f.store_string(export_project_callbacks(nodes_to_export))
@@ -41,10 +49,10 @@ func export_dialog(nodes_to_export : Array, path : String, export_type : int) ->
 
 
 func parse_dialog(nodes_to_export : Array) -> Dictionary:
-	var export_dic : Dictionary
+	var export_dic : Dictionary # Exported dicitionary
 
 	for i in nodes_to_export:
-		
+		# Export all the nodes in the tree according to their type
 		if i.get_dialog_type() == "normal" || i.get_dialog_type() == "begin":
 			export_dic[i.get_index_from()] = _parse_simple_node(i)
 		elif i.get_dialog_type() == "decision":
@@ -56,6 +64,7 @@ func parse_dialog(nodes_to_export : Array) -> Dictionary:
 
 	return export_dic
 
+# Realiza el parsing de las características del SimpleNode
 func _parse_simple_node(node : DialogNode) -> Dictionary:
 	
 	var node_tree_dic : Dictionary
@@ -70,6 +79,7 @@ func _parse_simple_node(node : DialogNode) -> Dictionary:
 
 	return node_tree_dic
 
+# Realiza el parsing de las características del EndNode
 func _parse_end_node(node : EndNode) -> Dictionary:
 	
 	var node_tree_dic : Dictionary = _parse_simple_node(node)

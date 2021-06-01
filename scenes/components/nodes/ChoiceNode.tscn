@@ -95,7 +95,9 @@ anchor_bottom = 0.0
 margin_left = 28.0
 margin_top = 111.0
 margin_right = 321.0
-margin_bottom = 150.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_vertical = 3
 
 [node name="Title" parent="Line" index="0"]
 margin_right = 293.0
@@ -104,15 +106,15 @@ margin_bottom = 27.0
 [node name="LineText" parent="Line" index="1"]
 margin_top = 31.0
 margin_right = 293.0
-margin_bottom = 39.0
+margin_bottom = 100.0
 
 [node name="AddDecision" type="Button" parent="."]
 margin_left = 28.0
-margin_top = 151.0
+margin_top = 212.0
 margin_right = 321.0
-margin_bottom = 178.0
+margin_bottom = 239.0
+size_flags_vertical = 0
 text = "Add decision"
 
 [editable path="Connect"]
-
 [editable path="Line"]

@@ -65,6 +65,7 @@ func is_editor_file(scene : Node) -> bool:
 	return false
 		
 
+# Display an alert window dialog
 func display_alert(alert_title : String, alert_text : String) -> void:
 
 	var alert : AcceptDialog = AcceptDialog.new()
@@ -72,5 +73,3 @@ func display_alert(alert_title : String, alert_text : String) -> void:
 	alert.dialog_text = alert_text
 	add_child(alert)
 	alert.popup_centered()
-
-	print(get_tree().to_string())

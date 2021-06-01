@@ -1,6 +1,6 @@
 extends Node
 
-
+# Events class for global events
 class_name Events
 
 
